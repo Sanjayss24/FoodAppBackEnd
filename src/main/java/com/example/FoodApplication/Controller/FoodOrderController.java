@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -38,8 +38,8 @@ public class FoodOrderController {
 		return foodOrderService.saveFoodOrder(foodOrder);
 	}
 	
-	@DeleteMapping("/deletefo")
-	public ResponseEntity<ResponseStructure<FoodOrder>>  deleteFoodOrder(@RequestParam int id) {
+	@DeleteMapping("/deletefo/{id}")
+	public ResponseEntity<ResponseStructure<FoodOrder>>  deleteFoodOrder(@PathVariable int id) {
 		return foodOrderService.deleteFoodOrder(id);
 	}
 
@@ -55,7 +55,7 @@ public class FoodOrderController {
 	
 	@PutMapping("/updatefo/{id}")
 	public ResponseEntity<ResponseStructure<FoodOrder>> updateFoodOrder(@RequestBody FoodOrder foodOrder,@PathVariable int id) {
-		return foodOrderService.udpateFoodOrder(foodOrder, id);
+		return foodOrderService.updateFoodOrder(foodOrder, id);
 	}
 
 	
